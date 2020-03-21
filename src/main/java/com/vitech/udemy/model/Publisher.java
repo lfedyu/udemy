@@ -6,32 +6,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
-@Builder
-@RequiredArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(exclude = "books")
 @ToString(exclude = "books")
-public class Author {
+@EqualsAndHashCode(exclude = "books")
+public class Publisher {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
-  private String firstName;
-  private String lastName;
+  private String name;
 
-  @ManyToMany(mappedBy = "authors")
+  @OneToMany(mappedBy = "publisher")
   @Builder.Default
   private List<Book> books = new ArrayList<>();
+
 }
