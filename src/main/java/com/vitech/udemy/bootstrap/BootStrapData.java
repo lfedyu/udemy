@@ -34,6 +34,8 @@ public class BootStrapData implements CommandLineRunner {
         .publisher(aba)
         .build();
 
+    aba.getBooks().add(ddd);
+
     eric.getBooks().add(ddd);
     ddd.getAuthors().add(eric);
 
